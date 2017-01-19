@@ -1,45 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func2.c                                            :+:      :+:    :+:   */
+/*   func.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dprovorn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/15 18:25:32 by dprovorn          #+#    #+#             */
-/*   Updated: 2017/01/19 13:24:12 by dprovorn         ###   ########.fr       */
+/*   Created: 2017/01/19 13:32:22 by dprovorn          #+#    #+#             */
+/*   Updated: 2017/01/19 13:32:23 by dprovorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-void	ft_putchar(char c)
+int		ft_atoi(char *str)
 {
-	write(1, &c, 1);
+	int i;
+	int j;
+	int out;
+
+	i = 0;
+	j = 1;
+	out = 0;
+
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		out *= 10;
+		out += str[i] - '0';
+		i++;
+	}
+	return (out);
 }
 
-void	ft_putstr(char *c)
+int		*intarr_dup(int *src, int n)
 {
+	int *dest;
 	int i;
 
 	i = -1;
-	while (*(c + ++i))
-		ft_putchar(*(c + i));
+	dest = (int*)malloc(sizeof(int)*n);
+	while(++i < n)
+		dest[i] = src[i];
+	return(dest);
 }
-
-int		ft_strcmp(char *s1, char *s2)
-{
-	int i;
-
-	i = 0;
-	while (*(s1 + i) && *(s1 + i) == *(s2 + i))
-		i++;
-	return (*((unsigned char *)s1 + i) - *((unsigned char *)s2 + i));
-}
-
-/*int		print_error(t_list **f, t_list **s)
-{
-	write(1, AC_RED, 5);
-	ft_putstr("Error\n");
-	write(1, AC_RESET, 4);
-	free_list(f, s);
-	return (0);
-}*/

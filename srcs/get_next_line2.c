@@ -6,7 +6,7 @@
 /*   By: dprovorn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 18:27:44 by dprovorn          #+#    #+#             */
-/*   Updated: 2017/01/18 19:10:46 by dprovorn         ###   ########.fr       */
+/*   Updated: 2017/01/19 14:30:01 by dprovorn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,20 @@ char	*my_realloc(char *old, int size)
 		i++;
 	}
 	free(old);
+	return (new);
+}
+
+int		*num_realloc(int *a, int s_src, int d_size)
+{
+	int i;
+	int *new;
+
+	i = -1;
+	if ((new = malloc(sizeof(int) * d_size)) == NULL)
+		return NULL;
+	while (++i <= s_src)
+		new[i] = a[i];
+//	free(a);
 	return (new);
 }
 
